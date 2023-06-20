@@ -1,0 +1,47 @@
+
+
+<!-- Auteur: Corentin ROBIN-->
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta content="text/html" charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles/index.css">
+        <link rel="icon" href="images/logo.png">
+        <script src="scripts/js/index.js"></script>
+        <title>Carte</title>
+    </head>
+
+    <body>
+
+    	<canvas></canvas>
+
+    	<div class="details"></div>
+
+    	<table class="controls menu open">
+    		<tr><td colspan=2 class="handle" data-target="table.controls"><img src="images/iconmonstr-eye-6.svg" onclick="document.querySelector('table.controls').classList.toggle('open')"> Controls</td></tr>
+    		<tr><td><input type="checkbox" onchange="Carte.showClimatePoints = this.checked ; Carte.draw() ; if(this.checked) document.querySelector('table.climate').classList.add('open')" id="showClimatePoints"> <label for="showClimatePoints">climate</label></td></tr>
+            <tr><td><input type="checkbox" onchange="Carte.dynamicColoring = this.checked ; Carte.draw()" id="dynamicColoring"> <label for="dynamicColoring">dynamic coloring, related to</label>
+                        <select id="dynamicColoringRelation" onchange="Carte.dynamicColoringRelation = this.value ; Carte.draw()">
+                            <option value="population">population</option>
+                            <option value="wealth">wealth</option>
+                        </select>
+                    </td></tr>
+
+            <tr><td><input type="checkbox" onchange="Carte.showBorders = this.checked ; Carte.draw()" id="showBorders"> <label for="showBorders">borders</label></td></tr>
+            <tr><td><input type="checkbox" onchange="Carte.showCities = this.checked ; Carte.draw()" id="showCities"> <label for="showCities">cities</label></td></tr>
+            <tr><td><input type="checkbox" onchange="Carte.showGarland = this.checked ; Carte.draw()" id="showGarland"> <label for="showGarland">garland <sup>(Chrome recommended)</sup></label></td></tr>
+            <tr><td><input type="checkbox" onchange="Carte.showCirclesOfLatitude = this.checked ; Carte.draw()" id="showCirclesOfLatitude"> <label for="showCirclesOfLatitude">circles of latitude</label></td></tr>
+    		<tr><td><input type="checkbox" onchange="Carte.toggleFullScreen(this.checked)" id="fullScreen"> <label for="fullScreen">full screen</label></td></tr>
+            <tr><td><input type="button" value="Download image" onclick="Carte.download()"></td></tr>
+    	</table>
+
+    	<table class="climate menu open"></table>
+
+        <table class="language menu" style="display: none"></table>
+
+        <div class="loading"><div></div></div>
+    </body>
+</html>
